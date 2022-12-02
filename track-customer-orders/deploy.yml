@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: track-customer-order-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: track-customer-order
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: track-customer-order
-        image: ernivasit/track-order:1.0.0
+        image: ernivasit/track-order:1.0.1
         resources:
           limits:
             memory: "128Mi"
