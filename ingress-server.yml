@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-server
+  labels:
+    name: ingress-server
+spec:
+  ingressClassName: nginx # can be checked by kubectl get ingressclass
+  rules:
+  - host: ranga.danga.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/api/customers"
+        backend:
+          service:
+            name: customer-service-cluster
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: "/api/products"
+        backend:
+          service:
+            name: product-service-cluster
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: "/api/customerorders"
+        backend:
+          service:
+            name: customer-orders-mapping-cluster
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: "/api/trackorders"
+        backend:
+          service:
+            name: track-order-cluster
+            port: 
+              number: 80

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: track-customer-order-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: track-customer-order
+  template:
+    metadata:
+      labels:
+        app: track-customer-order
+    spec:
+      containers:
+      - name: track-customer-order
+        image: ernivasit/track-order:1.0.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
